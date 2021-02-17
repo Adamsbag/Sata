@@ -1,0 +1,31 @@
+# New Name
+bash header                                                                                                    # Execute the file header to display the format
+echo 
+echo -e "               Enter R/r or E/e: \c"                                                                                                         
+read selection                                                                                                 # 5 test the choice of the users
+if test $selection = "R" -o $selection = "r"                                                                   # 6 R or r to access the renaming process
+  then
+     echo
+     echo -e "               Enter the name of the file you want to rename: \c"
+     read oldname                                                                                              # 10 Get the file name from the user
+     counter=0                                                                                                 # 11 Counter to rename another file
+     DIR=$HOME/keep                                                                                            # 12 Keep the directory path
+     redo="yes"                                                                                                # 13 Test to repeat the renaming process 
+     while [$redo = "yes" ]
+     do
+     if test -f oldname                                                                                        # 16 Check the availability of the file in the directory
+       then
+       echo
+       echo -e "               The file \e[32m$oldname\e[om exist, Do you want to rename it?"
+       echo
+       echo -e "               Type Y/y for Yes or N/n for No: \c"
+       read answer
+       echo
+       if $answer = "Y -o $answer = "y" -o $answer = "yes"                                                     # 24 Test the answer to rename the file or quit the process
+         then
+           echo -e "                  Type new name: \c"
+           read newname                                                                                        # 27 Store the newmnamof the file
+           echo
+           echo
+           mv $oldname $newname                                                                                # 30 Assign the newname to the file
+           echo -e "                    File \e[32m$oldname\e[om changed to $newname
