@@ -42,21 +42,45 @@ if test $selection = "R" -o $selection = "r"                                    
               echo "                    You chose not to rename another file."
               echo
               echo "                    The program will close in 7 second"
+              
               sleep 7
               clear
               exit 0
+              
            fi
-        else
-          bash header
-          echo -e "                   The file \e[32m$oldname\e[32m Doesnt exist!"
-          echo
-          echo -e "                   The program will close in 7 second!"
-          sleep 7
-          clear
-          exit 0
-       fi
-       done
-   else
+     else                                                                                                      # 51 Execute the instructions if -f oldname returns FALSE
+       bash header
+       echo "              You chose not rename the file \e[32m$oldname\e[om."
+       echo
+       echo "               The program will close in 7 second"
+       
+       sleep 7
+       clear
+       exit 0
+    
+    fi          
+ else
+   bash header
+   echo -e "                   The file \e[32m$oldname\e[32m Doesnt exist!"
+   echo
+   echo -e "                   The program will close in 7 second!"
+   
+   sleep 7
+   clear
+   exit 0
+ fi
+ done
+ else
+   bash header
+   echo
+   echo -e "                You have been prompted to the refreshed screen"
+   echo
+   echo "                    The program will close in 5 second"
+   
+   sleep 5
+   clear
+   exit 0
+ fi
        
        
            
