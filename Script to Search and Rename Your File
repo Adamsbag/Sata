@@ -29,3 +29,34 @@ if test $selection = "R" -o $selection = "r"                                    
            echo
            mv $oldname $newname                                                                                # 30 Assign the newname to the file
            echo -e "                    File \e[32m$oldname\e[om changed to $newname
+           echo
+           echo -e "                Do you want to rename another file? \e[32mYes\e[32m or \e[32mNo\e[32m: ]c"
+           read redo
+           if test $redo = "yes"                                                                               # 35 Test the answer wether to start the renaming or quit the program
+              then
+                bash header
+                echo -e "                  Enter the name of the file you want to rename: \c"                  # 39 Retreive the name of the file you to look up
+                read oldname                                                                                   # 40 Execute instructions if redo is different from yes
+           else
+              bash header
+              echo "                    You chose not to rename another file."
+              echo
+              echo "                    The program will close in 7 second"
+              sleep 7
+              clear
+              exit 0
+           fi
+        else
+          bash header
+          echo -e "                   The file \e[32m$oldname\e[32m Doesnt exist!"
+          echo
+          echo -e "                   The program will close in 7 second!"
+          sleep 7
+          clear
+          exit 0
+       fi
+       done
+   else
+       
+       
+           
