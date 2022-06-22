@@ -1,0 +1,94 @@
+# New Name
+bash header                                                                                                    # Execute the file header to display the format
+echo 
+echo -e "               Enter R/r or E/e: \c"                                                                                                         
+read selection                                                                                                 # 5 test the choice of the users
+if test $selection = "R" -o $selection = "r"                                                                   # 6 R or r to access the renaming process
+  then
+     echo
+     echo -e "               Enter the name of the file you want to rename: \c"
+     read oldname                                                                                              # 10 Get the file name from the user
+     counter=0                                                                                                 # 11 Counter to rename another file
+     DIR=$HOME/keep                                                                                            # 12 Keep the directory path
+     redo="yes"                                                                                                # 13 Test to repeat the renaming process 
+     while [$redo = "yes" ]
+     do
+     if test -f oldname                                                                                        # 16 Check the availability of the file in the directory
+       then
+       echo
+       echo -e "               The file \e[32m$oldname\e[om exist, Do you want to rename it?"
+       echo
+       echo -e "               Type Y/y for Yes or N/n for No: \c"
+       read answer
+       echo
+       if $answer = "Y -o $answer = "y" -o $answer = "yes"                                                     # 24 Test the answer to rename the file or quit the process
+         then
+           echo -e "                  Type new name: \c"
+           read newname                                                                                        # 27 Store the newmnamof the file
+           echo
+           echo
+           mv $oldname $newname                                                                                # 30 Assign the newname to the file
+           echo -e "                    File \e[32m$oldname\e[om changed to $newname
+           echo
+           echo -e "                Do you want to rename another file? \e[32mYes\e[32m or \e[32mNo\e[32m: ]c"
+           read redo
+           if test $redo = "yes"                                                                               # 35 Test the answer wether to start the renaming or quit the program
+              then
+                bash header
+                echo -e "                  Enter the name of the file you want to rename: \c"                  # 39 Retreive the name of the file you to look up
+                read oldname                                                                                   # 40 Execute instructions if redo is different from yes
+           else
+              bash header
+              echo "                    You chose not to rename another file."
+              echo
+              echo "                    The program will close in 7 second"
+
+              sleep 7
+              clear
+              exit 0
+
+           fi
+        else
+          bash header
+          echo -e "                   The file \e[32m$oldname\e[32m Doesnt exist!"
+          echo
+          echo -e "                   The program will close in 7 second!"
+          sleep 7
+          clear
+          exit 0
+       fi
+       done
+   else
+     else                                                                                                      # 51 Execute the instructions if -f oldname returns FALSE
+       bash header
+       echo "              You chose not rename the file \e[32m$oldname\e[om."
+       echo
+       echo "               The program will close in 7 second"
+
+       sleep 7
+       clear
+       exit 0
+
+    fi          
+ else
+   bash header
+   echo -e "                   The file \e[32m$oldname\e[32m Doesnt exist!"
+   echo
+   echo -e "                   The program will close in 7 second!"
+
+   sleep 7
+   clear
+   exit 0
+ fi
+ done
+ else
+   bash header
+   echo
+   echo -e "                You have been prompted to the refreshed screen"
+   echo
+   echo "                    The program will close in 5 second"
+
+   sleep 5
+   clear
+   exit 0
+ fi
